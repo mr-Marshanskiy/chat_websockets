@@ -140,3 +140,4 @@ media/
 !*/migrations/__init__.py
 /.env
 /.env.docker
+/.idea/
