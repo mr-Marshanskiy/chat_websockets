@@ -1,3 +1,5 @@
+import pdb
+
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import JsonWebsocketConsumer
 from common.consumers.mixins import JWTConsumerMixin
@@ -20,6 +22,16 @@ class BaseJsonWebsocketConsumer(JsonWebsocketConsumer):
             key.decode('utf-8'): value.decode('utf-8')
             for key, value in headers.items()
         }
+
+    def get_params(self):
+        param_str = self.scope.get('query_string').decode('utf-8')
+        params_str_list = param_str.split('&')
+        params = dict()
+
+        for param in params_str_list:
+            key, value = param.split('=')
+            params[key] = value
+        return params
 
     def disconnect(self, close_code):
         async_to_sync(self.channel_layer.group_discard)(
@@ -60,7 +72,7 @@ class BaseJsonWebsocketConsumer(JsonWebsocketConsumer):
 
 class JWTAuthenticatedConsumer(BaseJsonWebsocketConsumer, JWTConsumerMixin):
     def get_current_user(self):
-        user = get_user_by_jwt(self.get_jwt_from_headers())
+        user = get_user_by_jwt(self.get_jwt_from_params())
         return user
 
     def connect_validation(self):
