@@ -1,3 +1,4 @@
+from crum import get_current_user
 from django.contrib.auth import get_user_model
 from drf_spectacular.utils import extend_schema_view, extend_schema
 from rest_framework import generics
@@ -31,6 +32,8 @@ class UserListView(ListViewSet):
     )
     search_fields = ('last_name', 'email', 'username',)
 
+    def get_queryset(self):
+        return User.objects.exclude(id=get_current_user().pk)
 
 @extend_schema_view(
     retrieve=extend_schema(summary='Me', tags=['Users']),
