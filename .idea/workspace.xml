@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0422ec2b-418a-4bc6-b318-86d1a8c6bce3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/chat/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699445237319</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix: sort in messages">
+      <created>1699445376067</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1699445376067</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -92,6 +99,7 @@
     <MESSAGE value="feat: add is_message_mine" />
     <MESSAGE value="fix: list users without current" />
     <MESSAGE value="fix: docker file" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: docker file" />
+    <MESSAGE value="fix: sort in messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: sort in messages" />
   </component>
 </project>

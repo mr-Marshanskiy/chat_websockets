@@ -129,8 +129,10 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'common.pagination.BasePagination',
 }
 
-CORS_ALLOW_ALL_ORIGINS = True
-
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_HEADERS = ['*']
+CSRF_COOKIE_SECURE = False
 
 ######################
 # DRF SPECTACULAR
