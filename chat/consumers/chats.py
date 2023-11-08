@@ -17,20 +17,20 @@ class ChatConsumer(JWTAuthenticatedConsumer):
         return
 
     def receive_json(self, text_data=None, **kwargs):
-        print('Received json')
         chat_type = {'type': self.chat_type}
         return_dict = {**chat_type, **text_data}
-        message = self.create_message(return_dict)
-        return_dict['message'] = message.pk
+        obj = self.create_message(return_dict)
+        message = MessageSerializer(instance=obj).data
+        return_dict['message'] = message
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
             return_dict,
         )
 
     def chat_message(self, event):
-        obj = Message.objects.get(id=event['message'])
-        message = MessageSerializer(instance=obj).data
-        self.send_json(message)
+        # obj = Message.objects.get(id=event['message'])
+        # message = MessageSerializer(instance=obj).data
+        self.send_json(event['message'])
 
     def create_message(self, event):
         event['conversation'] = self.room_name
