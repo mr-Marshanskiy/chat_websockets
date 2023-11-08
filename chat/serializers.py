@@ -7,10 +7,16 @@ from rest_framework import serializers
 
 class MessageSerializer(serializers.ModelSerializer):
     sender = UserSerializer()
+    is_message_mine = serializers.SerializerMethodField()
 
     class Meta:
         model = Message
         exclude = ('conversation',)
+
+    def get_is_message_mine(self, instance):
+        if instance.sender == get_current_user():
+            return True
+        return False
 
 
 class MessageCreateSerializer(serializers.ModelSerializer):
