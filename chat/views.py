@@ -43,5 +43,5 @@ class MessageView(ListViewSet):
         chat_id = self.request.parser_context['kwargs'].get('pk')
         return Message.objects.filter(
             conversation_id=chat_id
-        ).order_by('timestamp')[:20]
+        ).order_by('timestamp')[20:]
 
