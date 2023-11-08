@@ -1,4 +1,5 @@
 from crum import get_current_user
+from django.db.models import Q
 
 from chat.models import Message, Conversation
 from users.serializers import UserSerializer
@@ -62,6 +63,12 @@ class ConversationCreateSerializer(serializers.ModelSerializer):
         initiator = validated_data.pop('initiator', None)
         receiver = validated_data.pop('receiver', None)
 
+        instance = Conversation.objects.filter(
+            Q(initiator=initiator, receiver=receiver) |
+            Q(initiator=receiver, receiver=initiator)
+        ).first()
+        if instance:
+            return instance
         instance, created = Conversation.objects.get_or_create(
             initiator=initiator, receiver=receiver
         )
