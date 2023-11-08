@@ -1,3 +1,6 @@
+from asgiref.sync import async_to_sync
+
+from chat.models import Message
 from common.consumers.base import JWTAuthenticatedConsumer
 from config import settings
 from chat.serializers import MessageSerializer, MessageCreateSerializer
@@ -13,9 +16,20 @@ class ChatConsumer(JWTAuthenticatedConsumer):
         self.room_group_name = f"chat_{self.room_name}"
         return
 
+    def receive_json(self, text_data=None, **kwargs):
+        print('Received json')
+        chat_type = {'type': self.chat_type}
+        return_dict = {**chat_type, **text_data}
+        message = self.create_message(return_dict)
+        return_dict['message'] = message.pk
+        async_to_sync(self.channel_layer.group_send)(
+            self.room_group_name,
+            return_dict,
+        )
+
     def chat_message(self, event):
-        message_obj = self.create_message(event)
-        message = MessageSerializer(instance=message_obj).data
+        obj = Message.objects.get(id=event['message'])
+        message = MessageSerializer(instance=obj).data
         self.send_json(message)
 
     def create_message(self, event):

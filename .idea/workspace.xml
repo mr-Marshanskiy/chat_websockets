@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0422ec2b-418a-4bc6-b318-86d1a8c6bce3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/consumers/chats.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/consumers/chats.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/consumers/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/common/consumers/base.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699445376067</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="fix:  cors allowed">
+      <created>1699445718946</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1699445718946</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -100,6 +109,7 @@
     <MESSAGE value="fix: list users without current" />
     <MESSAGE value="fix: docker file" />
     <MESSAGE value="fix: sort in messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: sort in messages" />
+    <MESSAGE value="fix:  cors allowed" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix:  cors allowed" />
   </component>
 </project>
