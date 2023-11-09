@@ -11,7 +11,8 @@ class ChatAdmin(admin.ModelAdmin):
 
 @admin.register(UserChat)
 class UserChatAdmin(admin.ModelAdmin):
-    list_display = ('id', 'user', 'chat')
+    readonly_fields = ('last_seen',)
+    list_display = ('id', 'user', 'chat', 'last_seen',)
     search_fields = ('id', 'user_id', 'chat_id')
 
 
