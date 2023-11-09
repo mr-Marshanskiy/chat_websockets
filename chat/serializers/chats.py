@@ -33,11 +33,13 @@ class MessageCreateSerializer(serializers.ModelSerializer):
 
 
 class ChatListSerializer(serializers.ModelSerializer):
+    chat_id = serializers.CharField()
     unread_messages = serializers.IntegerField()
+    name = serializers.CharField(source='chat.name')
 
     class Meta:
         model = Chat
-        fields = ('id', 'name', 'unread_messages')
+        fields = ('chat_id', 'name', 'unread_messages')
 
 
 # class ConversationCreateSerializer(serializers.ModelSerializer):
