@@ -1,5 +1,6 @@
 import os
 import django
+from channels.auth import AuthMiddlewareStack
 from channels.middleware import BaseMiddleware
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
@@ -15,6 +16,6 @@ from .tokenauth_middleware import TokenAuthMiddleware  # new
 
 application = ProtocolTypeRouter({
     'http': get_asgi_application(),
-    'websocket': AllowedHostsOriginValidator(  # new
+    'websocket': AuthMiddlewareStack(  # new
         BaseMiddleware(URLRouter(routing.websocket_urlpatterns)))
 })

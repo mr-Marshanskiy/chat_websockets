@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0422ec2b-418a-4bc6-b318-86d1a8c6bce3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/consumers/chats.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/consumers/chats.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/factories/chats.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/factories/chats.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/routing.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/routing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/serializers/chats.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/serializers/chats.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/asgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/asgi.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,7 +162,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699530882405</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="feat: notifications">
+      <created>1699540625417</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1699540625417</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -182,6 +185,7 @@
     <MESSAGE value="feat: new structure" />
     <MESSAGE value="fix: added name to list chat serializer" />
     <MESSAGE value="fix: websocket logic" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: websocket logic" />
+    <MESSAGE value="feat: notifications" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: notifications" />
   </component>
 </project>
