@@ -1,6 +1,7 @@
 from asgiref.sync import async_to_sync
 
 from chat.factories.chats import UserChatFactory
+from chat.models import Chat, Message
 from chat.serializers.chats import ChatListSerializer, MessageCreateSerializer, \
     MessageSerializer
 from chat.services.chats import UserChatService
@@ -57,6 +58,11 @@ class ChatConsumer(JWTAuthenticatedConsumer):
             self.room_name
         )
 
+        chats = Message.objects.filter(chat_id=self.room_name).order_by('timestamp')
+        message = MessageSerializer(chats, many=True).data
+        self.send_json(message)
+
+
     def receive_json(self, text_data=None, **kwargs):
         chat_type = {'type': self.chat_type}
         return_dict = {**chat_type, **text_data}
@@ -73,7 +79,6 @@ class ChatConsumer(JWTAuthenticatedConsumer):
             async_to_sync(self.channel_layer.group_send)(
                 f'chats_user_{user_id}', new_chat_type
             )
-
 
     def chat_message(self, event):
         self.send_json(event['message'])
