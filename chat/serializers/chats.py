@@ -42,6 +42,17 @@ class ChatListSerializer(serializers.ModelSerializer):
         fields = ('chat_id', 'name', 'unread_messages')
 
 
+class NotificationMessageSerializer(serializers.ModelSerializer):
+    chat_id = serializers.IntegerField(source='chat.id')
+    name = serializers.CharField(source='chat.name')
+    sender = serializers.CharField(source='sender.full_name')
+
+    class Meta:
+        model = Message
+        fields = ('chat_id', 'name', 'text', 'sender', 'timestamp')
+
+
+
 # class ConversationCreateSerializer(serializers.ModelSerializer):
 #
 #     class Meta:

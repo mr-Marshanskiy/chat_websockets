@@ -1,9 +1,11 @@
+import pdb
+
 from asgiref.sync import async_to_sync
 
-from chat.factories.chats import UserChatFactory
+from chat.factories.chats import UserChatFactory, MessageFactory
 from chat.models import Chat, Message
 from chat.serializers.chats import ChatListSerializer, MessageCreateSerializer, \
-    MessageSerializer
+    MessageSerializer, NotificationMessageSerializer
 from chat.services.chats import UserChatService
 from common.consumers.base import JWTAuthenticatedConsumer
 from config import settings
@@ -43,6 +45,30 @@ class MeChatsConsumer(JWTAuthenticatedConsumer):
             pass
 
 
+class MeChatNotificationsConsumer(JWTAuthenticatedConsumer):
+    chat_type = 'get_chat_notifications'
+    factory = MessageFactory
+    serializer = NotificationMessageSerializer
+
+    def connect_validation(self):
+        super().connect_validation()
+        self.room_group_name = f"chat_notification_user_{self.user.pk}"
+        return
+
+    def get_chat_notifications(self, event):
+        message_id = event.get('message')
+        message = self.factory().get_message(message_id)
+        data = self.serializer(message).data
+        self.send_json(data)
+
+    def disconnect(self, close_code):
+        super().disconnect(close_code)
+        try:
+            ACTIVE_USERS.remove(self.user.pk)
+        except KeyError:
+            pass
+
+
 class ChatConsumer(JWTAuthenticatedConsumer):
     chat_type = 'chat_message'
     user_chat_service = UserChatService
@@ -62,7 +88,6 @@ class ChatConsumer(JWTAuthenticatedConsumer):
         message = MessageSerializer(chats, many=True).data
         self.send_json(message)
 
-
     def receive_json(self, text_data=None, **kwargs):
         chat_type = {'type': self.chat_type}
         return_dict = {**chat_type, **text_data}
@@ -74,11 +99,20 @@ class ChatConsumer(JWTAuthenticatedConsumer):
             return_dict,
         )
 
-        new_chat_type = {'type': 'get_chats'}
+        refresh_chat_type = {'type': 'get_chats'}
+        notification_chat_type = {
+            'type': 'get_chat_notifications',
+            'message': obj.pk,
+        }
+
         for user_id in ACTIVE_USERS:
             async_to_sync(self.channel_layer.group_send)(
-                f'chats_user_{user_id}', new_chat_type
+                f'chats_user_{user_id}', refresh_chat_type
             )
+            if obj.sender != self.user:
+                async_to_sync(self.channel_layer.group_send)(
+                    f'chat_notification_user_{user_id}', notification_chat_type
+                )
 
     def chat_message(self, event):
         self.send_json(event['message'])
