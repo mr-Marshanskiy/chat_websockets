@@ -60,12 +60,17 @@ class BaseJsonWebsocketConsumer(JsonWebsocketConsumer):
         """Additional actions before connecting"""
         pass
 
+    def after_connect(self):
+        """Additional actions after connecting"""
+        pass
+
     def connect(self):
         try:
             self.prepare_connect()
             self.connect_validation()
             self.join_to_room_group()
             self.accept()
+            self.after_connect()
         except ConnectionError as e:
             self.close(4000)
 

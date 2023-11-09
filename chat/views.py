@@ -3,9 +3,9 @@ from django.contrib.auth import get_user_model
 from drf_spectacular.utils import extend_schema_view, extend_schema
 
 from common.views import LCRViewSet, ListViewSet
-from .models import Conversation, Message
+from .models import Chat, Message
 
-from chat import serializers
+from chat.serializers import chats as serializers
 from django.db.models import Q
 
 User = get_user_model()
@@ -14,22 +14,16 @@ User = get_user_model()
 @extend_schema_view(
     list=extend_schema(summary='List chats', tags=['Chats']),
     retrieve=extend_schema(summary='Retrieve chats', tags=['Chats']),
-    create=extend_schema(summary='Create chats', tags=['Chats']),
 )
-class ChatView(LCRViewSet):
-    queryset = Conversation.objects.all()
-    serializer_class = serializers.ConversationListSerializer
+class ChatView(ListViewSet):
+    queryset = Chat.objects.all()
+    serializer_class = serializers.ChatListSerializer
 
     def get_queryset(self):
         user = get_current_user()
-        return Conversation.objects.filter(
+        return Chat.objects.filter(
             Q(initiator=user) | Q(receiver=user)
         )
-
-    def get_serializer_class(self):
-        if self.action == 'create':
-            return serializers.ConversationCreateSerializer
-        return serializers.ConversationListSerializer
 
 
 @extend_schema_view(
