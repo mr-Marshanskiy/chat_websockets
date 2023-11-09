@@ -15,9 +15,10 @@ COPY ./requirements.txt .
 
 RUN python -m pip install -r requirements.txt --no-cache-dir
 
-RUN python manage.py makemigrations
-RUN python manage.py migrate --fake
+
 
 
 # copy project
 COPY . .
+RUN python manage.py makemigrations
+RUN python manage.py migrate --fake

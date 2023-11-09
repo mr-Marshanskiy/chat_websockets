@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0422ec2b-418a-4bc6-b318-86d1a8c6bce3" name="Changes" comment="" />
+    <list default="true" id="0422ec2b-418a-4bc6-b318-86d1a8c6bce3" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -173,7 +175,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699543065508</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="fix: docker">
+      <created>1699543604670</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1699543604670</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -190,6 +199,7 @@
     <MESSAGE value="fix: added name to list chat serializer" />
     <MESSAGE value="fix: websocket logic" />
     <MESSAGE value="feat: notifications" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: notifications" />
+    <MESSAGE value="fix: docker" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: docker" />
   </component>
 </project>
