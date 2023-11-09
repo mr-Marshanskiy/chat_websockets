@@ -3,7 +3,8 @@ version: '3.11'
 services:
   web:
     build: ./
-    command: daphne -b 0.0.0.0 -p 8000 config.asgi:application
+#    command: daphne -b 0.0.0.0 -p 8000 config.asgi:application
+    command: python manage.py runserver 0.0.0.0:8000
 
     volumes:
       - ./:/usr/src/app/
