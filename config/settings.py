@@ -129,11 +129,14 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'common.pagination.BasePagination',
 }
 
+
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = ['*']
 CSRF_COOKIE_SECURE = False
-
+CSRF_TRUSTED_ORIGINS = ["https://api-dev-chat.tech-march.ru/"]
+CSRF_ALLOWED_ORIGINS = ["https://api-dev-chat.tech-march.ru/"]
+CORS_ORIGINS_WHITELIST = ["https://api-dev-chat.tech-march.ru/"]
 ######################
 # DRF SPECTACULAR
 ######################
@@ -169,7 +172,7 @@ SPECTACULAR_SETTINGS = {
     'DISABLE_ERRORS_AND_WARNINGS': True,
 }
 
-ASGI_APPLICATION = 'ChatAPI.asgi.application'
+ASGI_APPLICATION = 'config.asgi.application'
 
 CHANNEL_LAYERS = {
     'default': {
