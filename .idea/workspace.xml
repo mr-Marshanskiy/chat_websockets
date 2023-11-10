@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0422ec2b-418a-4bc6-b318-86d1a8c6bce3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/main.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,10 +33,15 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Dev/drf_websocket_chat/.github/workflows",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Dev\drf_websocket_chat\.github\workflows" />
+      <recent name="C:\Dev\drf_websocket_chat" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Dev\drf_websocket_chat\chat\serializers" />
       <recent name="C:\Dev\drf_websocket_chat" />
@@ -204,7 +210,28 @@
       <option name="project" value="LOCAL" />
       <updated>1699543840413</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="fix: docker">
+      <created>1699544562723</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1699544562723</updated>
+    </task>
+    <task id="LOCAL-00024" summary="fix: docker">
+      <created>1699544804690</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1699544804690</updated>
+    </task>
+    <task id="LOCAL-00025" summary="fix: docker">
+      <created>1699593306356</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1699593306356</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
