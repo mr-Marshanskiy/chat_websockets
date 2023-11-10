@@ -109,10 +109,9 @@ class ChatConsumer(JWTAuthenticatedConsumer):
             async_to_sync(self.channel_layer.group_send)(
                 f'chats_user_{user_id}', refresh_chat_type
             )
-            if obj.sender != self.user:
-                async_to_sync(self.channel_layer.group_send)(
-                    f'chat_notification_user_{user_id}', notification_chat_type
-                )
+            async_to_sync(self.channel_layer.group_send)(
+                f'chat_notification_user_{user_id}', notification_chat_type
+            )
 
     def chat_message(self, event):
         self.send_json(event['message'])
