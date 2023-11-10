@@ -134,9 +134,8 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 CORS_ALLOW_HEADERS = ['*']
 CSRF_COOKIE_SECURE = False
-CSRF_TRUSTED_ORIGINS = ["https://api-dev-chat.tech-march.ru/"]
-CSRF_ALLOWED_ORIGINS = ["https://api-dev-chat.tech-march.ru/"]
-CORS_ORIGINS_WHITELIST = ["https://api-dev-chat.tech-march.ru/"]
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
 ######################
 # DRF SPECTACULAR
 ######################
