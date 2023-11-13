@@ -22,7 +22,7 @@ class Chat(models.Model):
 
 class UserChat(models.Model):
     chat = models.ForeignKey(
-        Chat, models.CASCADE, 'chats',
+        Chat, models.CASCADE, 'users',
     )
     user = models.ForeignKey(
         User, models.CASCADE, 'chats',

@@ -17,7 +17,6 @@ jobs:
         username: ${{ secrets.SERVER_USERNAME }}
         password: ${{ secrets.SSH_PASSWORD }}
         script: |
-          # Выполняет деплой
           cd ${{ secrets.PATH }}
           git pull
           docker-compose up -d --build

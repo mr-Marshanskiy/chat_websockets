@@ -1,3 +1,6 @@
+from asgiref.sync import async_to_sync
+
+
 class JWTConsumerMixin:
     def get_jwt_from_headers(self, lookup='authorization',):
         headers = self.get_headers()
@@ -11,3 +14,13 @@ class JWTConsumerMixin:
         if lookup not in params:
             return None
         return params['token']
+
+
+class ReceiveDispatch:
+    def receive_json(self, text_data=None, **kwargs):
+        chat_type = {'type': self.chat_type}
+        return_dict = {**chat_type, **text_data}
+        async_to_sync(self.channel_layer.group_send)(
+            self.room_group_name,
+            return_dict,
+        )

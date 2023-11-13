@@ -4,15 +4,11 @@ from chat.models import UserChat, Message
 
 class UserChatFactory:
     model = UserChat
-    queries_factory = UserChatQueriesFactory
+    queries = UserChatQueriesFactory
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.queries = self.queries_factory()
-
-    def get_user_chats(self, user):
+    def get_user_chats(self, user_id):
         return self.model.objects.filter(
-            user=user,
+            user_id=user_id,
         ).annotate(
             unread_messages=self.queries.unread_messages(),
             # last_message_time=self.queries.last_message_time(),
@@ -32,6 +28,10 @@ class MessageFactory:
     queries_factory = None
 
     def get_message(self, message_id):
-        return self.model.objects.filter(
-            id=message_id
-        ).first()
+        return self.model.objects.filter(id=message_id).first()
+
+    def get_chat_messages(self, chat_id):
+        return self.model.objects.filter(chat_id=chat_id).order_by('-timestamp')
+
+    def get_user_ids_from_message(self, message):
+        return message.chat.users.values_list('user_id', flat=True)

@@ -38,14 +38,6 @@ class BaseJsonWebsocketConsumer(JsonWebsocketConsumer):
             self.room_group_name, self.channel_name
         )
 
-    def receive_json(self, text_data=None, **kwargs):
-        chat_type = {'type': self.chat_type}
-        return_dict = {**chat_type, **text_data}
-        async_to_sync(self.channel_layer.group_send)(
-            self.room_group_name,
-            return_dict,
-        )
-
     def join_to_room_group(self):
         async_to_sync(self.channel_layer.group_add)(
             self.room_group_name, self.channel_name
@@ -60,10 +52,6 @@ class BaseJsonWebsocketConsumer(JsonWebsocketConsumer):
         """Additional actions before connecting"""
         pass
 
-    def after_connect(self):
-        """Additional actions after connecting"""
-        pass
-
     def connect(self):
         try:
             self.prepare_connect()
@@ -73,6 +61,10 @@ class BaseJsonWebsocketConsumer(JsonWebsocketConsumer):
             self.after_connect()
         except ConnectionError as e:
             self.close(4000)
+
+    def after_connect(self):
+        """Additional actions after connecting"""
+        pass
 
 
 class JWTAuthenticatedConsumer(BaseJsonWebsocketConsumer, JWTConsumerMixin):
