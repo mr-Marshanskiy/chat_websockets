@@ -1,8 +1,9 @@
 from chat.factories.queries.chats import UserChatQueriesFactory
 from chat.models import UserChat, Message
+from common.factories.base import BaseFactory
 
 
-class UserChatFactory:
+class UserChatFactory(BaseFactory):
     model = UserChat
     queries = UserChatQueriesFactory
 
@@ -23,7 +24,7 @@ class UserChatFactory:
         obj.save()
 
 
-class MessageFactory:
+class MessageFactory(BaseFactory):
     model = Message
     queries_factory = None
 

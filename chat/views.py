@@ -17,7 +17,7 @@ User = get_user_model()
 )
 class ChatView(ListViewSet):
     queryset = Chat.objects.all()
-    serializer_class = serializers.ChatListSerializer
+    serializer_class = serializers.UserChatListSerializer
 
     def get_queryset(self):
         user = get_current_user()

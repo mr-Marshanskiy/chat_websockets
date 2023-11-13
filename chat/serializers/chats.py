@@ -1,7 +1,7 @@
 from crum import get_current_user
 from django.db.models import Q
 
-from chat.models import Message, Chat
+from chat.models import Message, Chat, UserChat
 from users.serializers import UserSerializer
 from rest_framework import serializers
 
@@ -32,13 +32,13 @@ class MessageCreateSerializer(serializers.ModelSerializer):
         return attrs
 
 
-class ChatListSerializer(serializers.ModelSerializer):
+class UserChatListSerializer(serializers.ModelSerializer):
     chat_id = serializers.CharField()
     unread_messages = serializers.IntegerField()
     name = serializers.CharField(source='chat.name')
 
     class Meta:
-        model = Chat
+        model = UserChat
         fields = ('chat_id', 'name', 'unread_messages')
 
 
