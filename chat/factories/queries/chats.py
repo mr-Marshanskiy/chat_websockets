@@ -15,8 +15,8 @@ class UserChatQueriesFactory:
 
     @staticmethod
     def last_message_time():
-        return Coalesce(Subquery(
+        return Cast(Subquery(
             Message.objects.filter(
                 chat_id=OuterRef('chat_id')
-            ).only('timestamp').order_by('-timestamp')[:0]
-        ), 0, output_field=DateTimeField())
+            ).values('timestamp').order_by('-timestamp')[:1]
+        ), output_field=DateTimeField())

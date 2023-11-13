@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0422ec2b-418a-4bc6-b318-86d1a8c6bce3" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/chat/factories/chats.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/factories/chats.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/factories/queries/chats.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/factories/queries/chats.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/services/chats.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/services/chats.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -300,7 +302,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699877074892</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="fix: sort in messages">
+      <created>1699877151135</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1699877151135</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -309,7 +318,6 @@
     <MESSAGE value="feat: add is_message_mine" />
     <MESSAGE value="fix: list users without current" />
     <MESSAGE value="fix: docker file" />
-    <MESSAGE value="fix: sort in messages" />
     <MESSAGE value="fix:  cors allowed" />
     <MESSAGE value="fix: duplicated messages" />
     <MESSAGE value="fix: limit messages" />
@@ -326,6 +334,7 @@
     <MESSAGE value="fix: update last seen after text message" />
     <MESSAGE value="refactor: service refactor" />
     <MESSAGE value="feat: added sort in chat list" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: added sort in chat list" />
+    <MESSAGE value="fix: sort in messages" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: sort in messages" />
   </component>
 </project>
