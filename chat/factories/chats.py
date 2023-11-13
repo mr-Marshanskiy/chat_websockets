@@ -12,8 +12,8 @@ class UserChatFactory(BaseFactory):
             user_id=user_id,
         ).annotate(
             unread_messages=self.queries.unread_messages(),
-            # last_message_time=self.queries.last_message_time(),
-        )
+            last_message_time=self.queries.last_message_time(),
+        ).order_by('-last_message_time')
 
     def get_user_chat(self, user_id, chat_id):
         return self.model.objects.filter(user_id=user_id, chat_id=chat_id).first()
