@@ -79,6 +79,7 @@ class ChatConsumer(JWTAuthenticatedConsumer):
         )
         messages = self.message_service().get_last_messages(chat_id=self.room_name)
         self.send_json(messages)
+        self._refresh_user_chats()
 
     def receive_json(self, text_data=None, **kwargs):
         message = self._create_message(text_data)
@@ -130,4 +131,12 @@ class ChatConsumer(JWTAuthenticatedConsumer):
             async_to_sync(self.channel_layer.group_send)(
                 f'chat_notification_user_{user_id}', event
             )
+        return
+
+    def _refresh_user_chats(self):
+        event = {'type': 'get_chats'}
+
+        async_to_sync(self.channel_layer.group_send)(
+            f'chats_user_{self.user.pk}', event,
+        )
         return
