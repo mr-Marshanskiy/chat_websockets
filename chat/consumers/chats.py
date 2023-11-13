@@ -84,8 +84,12 @@ class ChatConsumer(JWTAuthenticatedConsumer):
     def receive_json(self, text_data=None, **kwargs):
         message = self._create_message(text_data)
         self._send_message(message)
+        self.user_chat_service().update_last_seen(
+            user_id=self.user.pk, chat_id=self.room_name
+        )
         self._update_user_chats(message)
         self._send_user_notifications(message)
+
         return
 
     def chat_message(self, event):
