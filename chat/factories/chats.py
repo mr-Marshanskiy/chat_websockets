@@ -32,7 +32,7 @@ class MessageFactory(BaseFactory):
         return self.model.objects.filter(id=message_id).first()
 
     def get_chat_messages(self, chat_id):
-        return self.model.objects.filter(chat_id=chat_id).order_by('-timestamp')
+        return self.model.objects.filter(chat_id=chat_id).order_by('timestamp')
 
     def get_user_ids_from_message(self, message):
         return message.chat.users.values_list('user_id', flat=True)
