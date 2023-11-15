@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0422ec2b-418a-4bc6-b318-86d1a8c6bce3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/factories/queries/chats.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/factories/queries/chats.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/services/chats.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/services/chats.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1699877151135</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="fix: sort in messages">
+      <created>1699877853970</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1699877853970</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
